@@ -141,6 +141,11 @@ section { padding-block: 64px; border-bottom: 1px solid var(--line); }
 .chap-add { margin-top: 10px; display: inline-block; border-bottom: 1px solid var(--g-line); }
 html:not(.ed-mode) .ed-only { display: none !important; }
 html:not(.ed-mode) .chap:not(:has(.chap-row)) { display: none; }
+.reelsw { display: flex; gap: 8px; align-items: center; margin: 6px 0 0; font: 400 12.5px var(--mono); color: var(--dim); }
+.reelsw button { all: unset; cursor: pointer; color: var(--dim); padding: 2px 0; border-bottom: 1px solid transparent; }
+.reelsw button:hover { color: var(--body); }
+.reelsw button[aria-pressed="true"] { color: var(--hi); border-bottom-color: var(--g); }
+#vlist li[hidden] { display: none; }
 .vrow { all: unset; box-sizing: border-box; cursor: pointer; display: grid; grid-template-columns: 128px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 14px; padding-block: 12px; border-bottom: 1px solid var(--line); width: 100%; }
 .vrow img { grid-row: 1 / span 2; width: 128px; height: 72px; object-fit: cover; opacity: .75; }
 .vrow-t { color: var(--body); font-weight: 500; align-self: end; }
@@ -325,6 +330,8 @@ footer { padding-block: 32px 48px; font-size: 12px; color: var(--dim); }
 </style><style>
 /* 뺀 것 (편집 모드 [✕ 빼기]) */
 html:not(.ed-mode) :is([data-k="profile.facts"], [data-k="videos.0.points.2"], [data-k="work.items.1.lines.2"]) { display: none !important; }
+/* 안이 다 빈 구역 · 줄은 선까지 숨김 (2026-10-25) */
+.pf-void { display: none !important; }
 @media (max-width: 520px) {
   .wrap { padding-inline: 16px; }
   .vrow { grid-template-columns: 96px minmax(0, 1fr); } .vrow img { width: 96px; height: 54px; }
@@ -410,27 +417,27 @@ html:not(.ed-mode) :is([data-k="profile.facts"], [data-k="videos.0.points.2"], [
         <div class="vinfo" id="vinfo" data-m="vinfo"></div>
       </div>
       <ol class="vside" id="vlist" data-m="vlist">
-      <li data-id="VdOpEjBH0aU"><button type="button" class="vrow" data-i="0" aria-label="명조: 워더링 웨이브 재생">
+      <li data-id="VdOpEjBH0aU" data-region="both"><button type="button" class="vrow" data-i="0" aria-label="명조: 워더링 웨이브 재생">
         <img src="img/사진넣기_영상_VdOpEjBH0aU.jpg" alt="" width="128" height="72" loading="lazy" draggable="false" data-slot="사진넣기/영상_VdOpEjBH0aU">
         <span class="vrow-t">명조: 워더링 웨이브</span>
         <span class="vrow-m">인게임 · 히유키 · 데니아 · 0:45</span>
       </button></li>
-      <li data-id="qJQO0FiphRs"><button type="button" class="vrow" data-i="1" aria-label="The Last of Us Part II 재생">
+      <li data-id="qJQO0FiphRs" data-region="both"><button type="button" class="vrow" data-i="1" aria-label="The Last of Us Part II 재생">
         <img src="img/사진넣기_영상_qJQO0FiphRs.jpg" alt="" width="128" height="72" loading="lazy" draggable="false" data-slot="사진넣기/영상_qJQO0FiphRs">
         <span class="vrow-t">The Last of Us Part II</span>
         <span class="vrow-m">인게임 · 2:26</span>
       </button></li>
-      <li data-id="j7EaNF1skhE"><button type="button" class="vrow" data-i="2" aria-label="퍼스트 버서커: 카잔 재생">
+      <li data-id="j7EaNF1skhE" data-region="both"><button type="button" class="vrow" data-i="2" aria-label="퍼스트 버서커: 카잔 재생">
         <img src="img/사진넣기_영상_j7EaNF1skhE.jpg" alt="" width="128" height="72" loading="lazy" draggable="false" data-slot="사진넣기/영상_j7EaNF1skhE">
         <span class="vrow-t">퍼스트 버서커: 카잔</span>
         <span class="vrow-m">인게임 · 1:14</span>
       </button></li>
-      <li data-id="I6DvBLc24bA"><button type="button" class="vrow" data-i="3" aria-label="승리의 여신: 니케 재생">
+      <li data-id="I6DvBLc24bA" data-region="asia"><button type="button" class="vrow" data-i="3" aria-label="승리의 여신: 니케 재생">
         <img src="img/사진넣기_영상_I6DvBLc24bA.jpg" alt="" width="128" height="72" loading="lazy" draggable="false" data-slot="사진넣기/영상_I6DvBLc24bA">
         <span class="vrow-t">승리의 여신: 니케</span>
         <span class="vrow-m">UI 가챠 · 인게임 · 1:26</span>
       </button></li>
-      <li data-id="n3xphW5duuE"><button type="button" class="vrow" data-i="4" aria-label="원신 · 명조 · 퍼니싱 재생">
+      <li data-id="n3xphW5duuE" data-region="both"><button type="button" class="vrow" data-i="4" aria-label="원신 · 명조 · 퍼니싱 재생">
         <img src="img/사진넣기_영상_n3xphW5duuE.jpg" alt="" width="128" height="72" loading="lazy" draggable="false" data-slot="사진넣기/영상_n3xphW5duuE">
         <span class="vrow-t">원신 · 명조 · 퍼니싱</span>
         <span class="vrow-m">인게임 · 0:48</span>
@@ -577,7 +584,8 @@ html:not(.ed-mode) :is([data-k="profile.facts"], [data-k="videos.0.points.2"], [
 <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.8/dist/hls.min.js"></script>
 <script>
 (function () {
-  var VIDS = [{"id":"VdOpEjBH0aU","si":0,"title":"명조: 워더링 웨이브","kind":"인게임 · 히유키 · 데니아","meta":[["개발 · 배급","쿠로게임즈"],["엔진","언리얼 엔진 4"],["장르","서브컬처 / 원신 라이크"],["캐릭터","히유키 (응결 · 검) → 데니아 (용융 · 증폭기)"],["사용 DAW","Cubase 13"]],"points":["데니아 · 스킬 사운드 (0:32부터): Tonal 매직 소스를 스크래치 소리를 이용해 직접 MRatioMB 플러그인을 중심으로 Mid 대역에 무게를 두고, 상단에는 Shimmer 질감을 얹어 마법이 퍼져 나가는 반짝임을 표현했습니다.","데니아 · 보이스 디자인: 이중적인 성격을 표현하는 데 초점을 맞췄습니다.\nSend 버스에 Echo와 Raum(리버브)을 걸어, 대사에서 초월적인 느낌을 추가하는 걸 의도로 믹싱하였습니다.","Send 버스에 Echo와 Raum(리버브)을 걸어, 대사가 공간에 남아 울리는 느낌을 만들었습니다.","여기에 Valhalla Shimmer를 더해, 원래 목소리 위로 한 옥타브 높은 잔향이 따라붙게 했습니다. 같은 목소리 안에서 또 다른 존재가 겹쳐 말하는 듯한 인상을 주어, 캐릭터 안에 숨어 있는 '다른 자아'가 드러나는 순간을 의도했습니다.","원음(Dry)은 중심에 또렷하게 두고 효과는 Send로만 섞어서, 대사 전달력은 지키면서 이질감만 더해지도록 균형을 맞췄습니다."],"links":[],"chapters":[[0,"0:00","히유키 · 검기와 응결 공격","0:04"],[4,"0:04","히유키 · 클로즈업 컷인","0:07"],[7,"0:07","히유키 · 연속 베기","0:20"],[20,"0:20","히유키 · 마무리 일격","0:26"],[26,"0:26","데니아 · 교대 등장","0:29"],[29,"0:29","데니아 · 다른 자아 (보이스 디자인)","0:32"],[32,"0:32","데니아 · 스킬 사운드","0:39"],[39,"0:39","데니아 · 원래 모습으로","0:45"]],"hls":"media/VdOpEjBH0aU/hls/index.txt","fallback":"media/VdOpEjBH0aU/fallback.mp4","poster":"img/사진넣기_영상_VdOpEjBH0aU.jpg","duration":45,"height":1080},{"id":"qJQO0FiphRs","si":1,"title":"The Last of Us Part II","kind":"인게임","meta":[["개발 · 배급","너티 독 · 소니 인터랙티브 엔터테인먼트"],["엔진","너티 독 자체 엔진"],["장르","액션 어드벤처 · 서바이벌 호러"],["사용 DAW","Cubase 13"]],"points":["성우 대사 디렉팅과 후보정, AI 보이스 생성 및 후보정을 통해 캐릭터의 상황과 감정을 표현하는 데 집중했습니다.","Foley 사운드 / Horror 사운드 / UI 사운드는 직접 Foley 녹음을 통해 만들었습니다.","실제 게임 플레이처럼 숨소리를 트리거로 사용해 적군으로부터 위험하다는 신호를 표현했습니다."],"links":[["영상 사운드 기획서 · 주인공 성우 디렉팅","#plan-tlou2"]],"chapters":[[0,"0:00","은신 · 매장 안에서 적의 움직임 살피기","0:27"],[43,"0:43","잠입 처치 · 근접 Foley","0:50"],[65,"1:05","제작(Crafting) 화면 · UI 사운드","1:09"],[72,"1:12","발각 · 근접 전투","1:27"],[102,"1:42","활과 근접 공격","1:57"],[118,"1:58","마무리 처치 · 주인공 대사","2:16"]],"hls":"media/qJQO0FiphRs/hls/index.txt","fallback":"media/qJQO0FiphRs/fallback.mp4","poster":"img/사진넣기_영상_qJQO0FiphRs.jpg","duration":146,"height":1080},{"id":"j7EaNF1skhE","si":2,"title":"퍼스트 버서커: 카잔","kind":"인게임","meta":[["개발 · 배급","네오플 · 넥슨"],["엔진","언리얼 엔진 4"],["장르","액션 RPG (하드코어 액션 / 소울라이크)"],["사용 DAW","Cubase 13"]],"points":["광폭한 버서커인 카잔의 성격을 살리기 위해 무겁고 금속감 있는 타격음과 피가 튀는 Gore 사운드를 중심으로 제작했습니다.","대검 Swing / Hit / Scrape / Ring 사운드는 직접 만든 소스(MSFX)를 레이어해 무기의 무게감과 날의 울림을 표현했습니다.","갑옷과 사슬이 부딪히는 Metal Ring 레이어를 더해 근접 전투의 질감을 살렸습니다.","보스의 보라색 어둠 마법 패턴은 카잔의 붉은 피 계열 스킬과 대비되도록 Magic / Energy 소스로 다른 색깔을 냈습니다.","강공격과 스킬이 터지는 순간에는 Trailer Hit / Build-up 소스로 긴장감과 타격의 쾌감을 키웠고, 보스 패턴은 리버브(Raum)로 넓은 실내 공간의 울림을 표현했습니다."],"links":[],"chapters":[[0,"0:00","전투 시작 (카잔 스킬 연계)","0:36"],[36,"0:36","강공격 / 폭발 스킬","0:44"],[44,"0:44","보스 패턴 (어둠 마법)","1:04"],[64,"1:04","보스 강패턴 & 마무리","1:14"]],"hls":"media/j7EaNF1skhE/hls/index.txt","fallback":"media/j7EaNF1skhE/fallback.mp4","poster":"img/사진넣기_영상_j7EaNF1skhE.jpg","duration":74,"height":1080},{"id":"I6DvBLc24bA","si":3,"title":"승리의 여신: 니케","kind":"UI 가챠 · 인게임","meta":[["개발 · 배급","시프트업 · 레벨 인피니트"],["엔진","유니티"],["장르","건 슈팅 RPG"],["사용 AI","ELEVENLABS"],["사용 DAW","Cubase 13"]],"points":["가챠 콘셉트를 메카닉의 움직임과 묵직함을 이용해 이미지에 어울리도록 디자인을 했습니다.","총기 사운드 제작 시 발포 후 잔여음을 배경 이미지에 맞게 만들었고 총기 몸체 소리와 함께 넣어 제작을 했습니다.","사운드 리디자인 작업 중 캐릭터 음성을 AI 프로그램을 이용해 직접 제작을 했습니다."],"links":[],"chapters":[[0,"0:00","가챠 연출 · 메카닉 장치","0:16"],[18,"0:18","라피 획득","0:22"],[27,"0:27","노벨 획득","0:30"],[32,"0:32","인게임 전투 · 총기 사운드","1:06"],[69,"1:09","길티 · 풀 버스트","1:15"],[77,"1:17","바니걸 · 작전 클리어","1:26"]],"hls":"media/I6DvBLc24bA/hls/index.txt","fallback":"media/I6DvBLc24bA/fallback.mp4","poster":"img/사진넣기_영상_I6DvBLc24bA.jpg","duration":86,"height":1080},{"id":"n3xphW5duuE","si":4,"title":"원신 · 명조 · 퍼니싱","kind":"인게임","meta":[["개발 · 배급","쿠로게임즈 (퍼니싱 · 명조) · 호요버스 (원신)"],["엔진","유니티 (퍼니싱 · 원신) · 언리얼 엔진 4 (명조)"],["장르","서브컬처 / 원신 라이크"],["구성","퍼니싱: 그레이 레이븐 / 명조: 워더링 웨이브 / 원신"],["사용 DAW","Cubase 13"]],"points":["퍼니싱: 연속된 타격 부분에서 메인 소리를 밝고 높은 음역대의 소스 위주로 만들어 더 시원한 느낌을 의도했습니다.","명조: 전기 속성과 크리스털 느낌을 내면서 Energy 소스로 보라색 전기 속성을 표현했습니다.","원신: 창의 날카로움을 표현하고 싶어 무기의 Swish가 다른 소리에 묻히지 않게 만들었습니다."],"links":[["영상 사운드 기획서","https://clever-humor-dc5.notion.site/2d477b07cc5a8091a642cf6886a5dfd2"]],"chapters":[[7,"0:07","퍼니싱 · 연속 타격","0:15"],[16,"0:16","퍼니싱 · 필살기 컷신","0:25"],[29,"0:29","명조 · 보라색 전기 · 크리스털","0:34"],[39,"0:39","원신 · 창 찌르기 Swish","0:43"]],"hls":"media/n3xphW5duuE/hls/index.txt","fallback":"media/n3xphW5duuE/fallback.mp4","poster":"img/사진넣기_영상_n3xphW5duuE.jpg","duration":48,"height":1080}];
+  var VIDS = [{"id":"VdOpEjBH0aU","si":0,"title":"명조: 워더링 웨이브","kind":"인게임 · 히유키 · 데니아","meta":[["개발 · 배급","쿠로게임즈"],["엔진","언리얼 엔진 4"],["장르","서브컬처 / 원신 라이크"],["캐릭터","히유키 (응결 · 검) → 데니아 (용융 · 증폭기)"],["사용 DAW","Cubase 13"]],"points":["데니아 · 스킬 사운드 (0:32부터): Tonal 매직 소스를 스크래치 소리를 이용해 직접 MRatioMB 플러그인을 중심으로 Mid 대역에 무게를 두고, 상단에는 Shimmer 질감을 얹어 마법이 퍼져 나가는 반짝임을 표현했습니다.","데니아 · 보이스 디자인: 이중적인 성격을 표현하는 데 초점을 맞췄습니다.\nSend 버스에 Echo와 Raum(리버브)을 걸어, 대사에서 초월적인 느낌을 추가하는 걸 의도로 믹싱하였습니다.","Send 버스에 Echo와 Raum(리버브)을 걸어, 대사가 공간에 남아 울리는 느낌을 만들었습니다.","여기에 Valhalla Shimmer를 더해, 원래 목소리 위로 한 옥타브 높은 잔향이 따라붙게 했습니다. 같은 목소리 안에서 또 다른 존재가 겹쳐 말하는 듯한 인상을 주어, 캐릭터 안에 숨어 있는 '다른 자아'가 드러나는 순간을 의도했습니다.","원음(Dry)은 중심에 또렷하게 두고 효과는 Send로만 섞어서, 대사 전달력은 지키면서 이질감만 더해지도록 균형을 맞췄습니다."],"links":[],"chapters":[[0,"0:00","히유키 · 검기와 응결 공격","0:04"],[4,"0:04","히유키 · 클로즈업 컷인","0:07"],[7,"0:07","히유키 · 연속 베기","0:20"],[20,"0:20","히유키 · 마무리 일격","0:26"],[26,"0:26","데니아 · 교대 등장","0:29"],[29,"0:29","데니아 · 다른 자아 (보이스 디자인)","0:32"],[32,"0:32","데니아 · 스킬 사운드","0:39"],[39,"0:39","데니아 · 원래 모습으로","0:45"]],"hls":"media/VdOpEjBH0aU/hls/index.txt","fallback":"media/VdOpEjBH0aU/fallback.mp4","poster":"img/사진넣기_영상_VdOpEjBH0aU.jpg","duration":45,"height":1080,"region":"both"},{"id":"qJQO0FiphRs","si":1,"title":"The Last of Us Part II","kind":"인게임","meta":[["개발 · 배급","너티 독 · 소니 인터랙티브 엔터테인먼트"],["엔진","너티 독 자체 엔진"],["장르","액션 어드벤처 · 서바이벌 호러"],["사용 DAW","Cubase 13"]],"points":["성우 대사 디렉팅과 후보정, AI 보이스 생성 및 후보정을 통해 캐릭터의 상황과 감정을 표현하는 데 집중했습니다.","Foley 사운드 / Horror 사운드 / UI 사운드는 직접 Foley 녹음을 통해 만들었습니다.","실제 게임 플레이처럼 숨소리를 트리거로 사용해 적군으로부터 위험하다는 신호를 표현했습니다."],"links":[["영상 사운드 기획서 · 주인공 성우 디렉팅","#plan-tlou2"]],"chapters":[[0,"0:00","은신 · 매장 안에서 적의 움직임 살피기","0:27"],[43,"0:43","잠입 처치 · 근접 Foley","0:50"],[65,"1:05","제작(Crafting) 화면 · UI 사운드","1:09"],[72,"1:12","발각 · 근접 전투","1:27"],[102,"1:42","활과 근접 공격","1:57"],[118,"1:58","마무리 처치 · 주인공 대사","2:16"]],"hls":"media/qJQO0FiphRs/hls/index.txt","fallback":"media/qJQO0FiphRs/fallback.mp4","poster":"img/사진넣기_영상_qJQO0FiphRs.jpg","duration":146,"height":1080,"region":"both"},{"id":"j7EaNF1skhE","si":2,"title":"퍼스트 버서커: 카잔","kind":"인게임","meta":[["개발 · 배급","네오플 · 넥슨"],["엔진","언리얼 엔진 4"],["장르","액션 RPG (하드코어 액션 / 소울라이크)"],["사용 DAW","Cubase 13"]],"points":["광폭한 버서커인 카잔의 성격을 살리기 위해 무겁고 금속감 있는 타격음과 피가 튀는 Gore 사운드를 중심으로 제작했습니다.","대검 Swing / Hit / Scrape / Ring 사운드는 직접 만든 소스(MSFX)를 레이어해 무기의 무게감과 날의 울림을 표현했습니다.","갑옷과 사슬이 부딪히는 Metal Ring 레이어를 더해 근접 전투의 질감을 살렸습니다.","보스의 보라색 어둠 마법 패턴은 카잔의 붉은 피 계열 스킬과 대비되도록 Magic / Energy 소스로 다른 색깔을 냈습니다.","강공격과 스킬이 터지는 순간에는 Trailer Hit / Build-up 소스로 긴장감과 타격의 쾌감을 키웠고, 보스 패턴은 리버브(Raum)로 넓은 실내 공간의 울림을 표현했습니다."],"links":[],"chapters":[[0,"0:00","전투 시작 (카잔 스킬 연계)","0:36"],[36,"0:36","강공격 / 폭발 스킬","0:44"],[44,"0:44","보스 패턴 (어둠 마법)","1:04"],[64,"1:04","보스 강패턴 & 마무리","1:14"]],"hls":"media/j7EaNF1skhE/hls/index.txt","fallback":"media/j7EaNF1skhE/fallback.mp4","poster":"img/사진넣기_영상_j7EaNF1skhE.jpg","duration":74,"height":1080,"region":"both"},{"id":"I6DvBLc24bA","si":3,"title":"승리의 여신: 니케","kind":"UI 가챠 · 인게임","meta":[["개발 · 배급","시프트업 · 레벨 인피니트"],["엔진","유니티"],["장르","건 슈팅 RPG"],["사용 AI","ELEVENLABS"],["사용 DAW","Cubase 13"]],"points":["가챠 콘셉트를 메카닉의 움직임과 묵직함을 이용해 이미지에 어울리도록 디자인을 했습니다.","총기 사운드 제작 시 발포 후 잔여음을 배경 이미지에 맞게 만들었고 총기 몸체 소리와 함께 넣어 제작을 했습니다.","사운드 리디자인 작업 중 캐릭터 음성을 AI 프로그램을 이용해 직접 제작을 했습니다."],"links":[],"chapters":[[0,"0:00","가챠 연출 · 메카닉 장치","0:16"],[18,"0:18","라피 획득","0:22"],[27,"0:27","노벨 획득","0:30"],[32,"0:32","인게임 전투 · 총기 사운드","1:06"],[69,"1:09","길티 · 풀 버스트","1:15"],[77,"1:17","바니걸 · 작전 클리어","1:26"]],"hls":"media/I6DvBLc24bA/hls/index.txt","fallback":"media/I6DvBLc24bA/fallback.mp4","poster":"img/사진넣기_영상_I6DvBLc24bA.jpg","duration":86,"height":1080,"region":"asia"},{"id":"n3xphW5duuE","si":4,"title":"원신 · 명조 · 퍼니싱","kind":"인게임","meta":[["개발 · 배급","쿠로게임즈 (퍼니싱 · 명조) · 호요버스 (원신)"],["엔진","유니티 (퍼니싱 · 원신) · 언리얼 엔진 4 (명조)"],["장르","서브컬처 / 원신 라이크"],["구성","퍼니싱: 그레이 레이븐 / 명조: 워더링 웨이브 / 원신"],["사용 DAW","Cubase 13"]],"points":["퍼니싱: 연속된 타격 부분에서 메인 소리를 밝고 높은 음역대의 소스 위주로 만들어 더 시원한 느낌을 의도했습니다.","명조: 전기 속성과 크리스털 느낌을 내면서 Energy 소스로 보라색 전기 속성을 표현했습니다.","원신: 창의 날카로움을 표현하고 싶어 무기의 Swish가 다른 소리에 묻히지 않게 만들었습니다."],"links":[["영상 사운드 기획서","https://clever-humor-dc5.notion.site/2d477b07cc5a8091a642cf6886a5dfd2"]],"chapters":[[7,"0:07","퍼니싱 · 연속 타격","0:15"],[16,"0:16","퍼니싱 · 필살기 컷신","0:25"],[29,"0:29","명조 · 보라색 전기 · 크리스털","0:34"],[39,"0:39","원신 · 창 찌르기 Swish","0:43"]],"hls":"media/n3xphW5duuE/hls/index.txt","fallback":"media/n3xphW5duuE/fallback.mp4","poster":"img/사진넣기_영상_n3xphW5duuE.jpg","duration":48,"height":1080,"region":"both"}];
+  var REEL_L = {"all":"전체","west":"서양","asia":"아시아"};
   var V = document.getElementById('player'), state = document.getElementById('vstate'), info = document.getElementById('vinfo');
   var hls = null, cur = -1, usingFallback = false, watchdog = null;
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
@@ -667,8 +675,96 @@ html:not(.ed-mode) :is([data-k="profile.facts"], [data-k="videos.0.points.2"], [
     document.querySelectorAll('.npanel').forEach(function (p) { p.hidden = p.getAttribute('data-panel') !== b.getAttribute('data-tab'); });
   });
   // 편집 모드(edit-design.js)가 구간을 더하고 뺄 때 다시 그리려고 내놓음
-  window.PF = { VIDS: VIDS, renderInfo: renderInfo, cur: function () { return cur; } };
-  if (VIDS.length) load(0, false);
+  window.PF = { VIDS: VIDS, renderInfo: renderInfo, cur: function () { return cur; }, reload: function (i) { cur = -1; if (VIDS.length) load(Math.max(0, Math.min(VIDS.length - 1, i || 0)), false); } };
+  // 구역 순서(site.json sectionOrder, 편집 화면 왼쪽 「페이지」 판에서 바꿈) — 구역 · 위 메뉴를 그 순서로
+  (function () {
+    var ORDER = ["videos","projects","work","notes","contact"];
+    var root = document.getElementById('top'); if (!root || !ORDER.length) return;
+    var secs = [].slice.call(root.children).filter(function (n) { return n.tagName === 'SECTION' && n.id; });
+    var after = secs.length ? secs[0].previousElementSibling : null;
+    ORDER.forEach(function (id) { var s = document.getElementById(id); if (s && s.parentNode === root) { if (after) after.after(s); else root.prepend(s); after = s; } });
+    var nav = document.querySelector('.nav');
+    if (nav) ORDER.forEach(function (id) { var a = nav.querySelector('a[href="#' + id + '"]'); if (a) nav.appendChild(a); });
+  })();
+  // ── 서양 · 아시아 (2026-10-26) — 링크 끝 ?reel=west | asia 면 그 지역 영상만(둘 다인 영상은 양쪽). 편집 화면은 늘 전부
+  var EDIT = /[?&]edit\b/.test(location.search);
+  var REEL = (function () { var m = /[?&]reel=(west|asia)\b/.exec(location.search); return EDIT || !m ? '' : m[1]; })();
+  var COUNT_T = null;   // 개수 글 원래 모양(사용자가 쓴 글) — 숫자만 바꿔 끼운다
+  function applyReel(r, first) {
+    REEL = r;
+    var firstI = -1, n = 0, secs = 0;
+    document.querySelectorAll('#vlist li[data-id]').forEach(function (li) {
+      var bt = li.querySelector('.vrow'), i = bt ? +bt.dataset.i : -1, v = VIDS[i];
+      var ok = !!v && (!REEL || !v.region || v.region === 'both' || v.region === REEL);
+      li.hidden = !ok;
+      if (ok) { n++; secs += v.duration || 0; if (firstI < 0) firstI = i; }
+    });
+    var c = document.querySelector('#videos .sec-h [data-k="labels.videosCount"]');
+    if (c && !EDIT) {
+      if (COUNT_T == null) COUNT_T = c.textContent;
+      var k = 0, mins = Math.max(1, Math.round(secs / 60));
+      c.textContent = COUNT_T.replace(/\d+(?:\.\d+)?/g, function (x) { k++; return k === 1 ? n : k === 2 ? mins : x; });
+    }
+    document.querySelectorAll('.reelsw button').forEach(function (x) { x.setAttribute('aria-pressed', x.dataset.reel === REEL ? 'true' : 'false'); });
+    var cur0 = VIDS[cur];
+    if (first || !cur0 || !(!REEL || cur0.region === 'both' || cur0.region === REEL)) { if (firstI >= 0) { cur = -1; load(firstI, false); } }
+  }
+  if (!EDIT && VIDS.some(function (v) { return v.region && v.region !== 'both'; })) {
+    var sh = document.querySelector('#videos .sec-h');
+    if (sh) {
+      var sw = document.createElement('p'); sw.className = 'reelsw';
+      sw.innerHTML = [['', REEL_L.all], ['west', REEL_L.west], ['asia', REEL_L.asia]].map(function (o) { return '<button type="button" data-reel="' + o[0] + '">' + esc(o[1]) + '</button>'; }).join('<span aria-hidden="true">·</span>');
+      sh.appendChild(sw);
+      sw.addEventListener('click', function (e) {
+        var bt = e.target.closest('[data-reel]'); if (!bt) return;
+        applyReel(bt.dataset.reel, false);
+        try { var u = new URL(location.href); if (bt.dataset.reel) u.searchParams.set('reel', bt.dataset.reel); else u.searchParams.delete('reel'); history.replaceState(null, '', u); } catch (_) {}
+      });
+    }
+  }
+  if (VIDS.length) applyReel(REEL, true);
+
+  // 안에 보이는 글 · 사진 · 영상이 하나도 없는 구역과 줄(테두리 선이 있는 칸)은 선까지 통째로 숨긴다(2026-10-25 사용자:
+  // 글을 다 지웠는데 선만 남아 지저분함). 공개 페이지와 편집 화면 모두. 편집 화면에선 글 · 숨김이 바뀔 때마다 다시 잰다
+  (function () {
+    var root = document.getElementById('top'); if (!root) return;
+    var shown = function (n) { return n.getClientRects().length > 0; };
+    function hasContent(el) {
+      var a = document.activeElement; if (a && a.isContentEditable && el.contains(a)) return true;
+      var m = el.querySelectorAll('img,video,iframe,svg,canvas,input,select,textarea');
+      for (var i = 0; i < m.length; i++) if (shown(m[i])) return true;
+      var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), t;
+      while ((t = w.nextNode())) if (t.nodeValue.trim() && t.parentElement && shown(t.parentElement)) return true;
+      return false;
+    }
+    var busy = false;
+    function run() {
+      if (busy) return; busy = true;
+      document.querySelectorAll('.pf-void').forEach(function (e) { e.classList.remove('pf-void'); });
+      var all = [].slice.call(root.querySelectorAll('section, section *')).filter(function (el) {
+        if (el.closest('[hidden]')) return false;   // 접힌 탭 안은 판단하지 않음
+        if (el.tagName === 'SECTION') return true;
+        if (!el.querySelector('[data-k],[data-m],img')) return false;   // 장식 선(내용이 원래 없는 칸)은 그대로
+        var cs = getComputedStyle(el);
+        return parseFloat(cs.borderTopWidth) > 0 || parseFloat(cs.borderBottomWidth) > 0;
+      });
+      all.reverse().forEach(function (el) {   // 안쪽부터
+        if (!hasContent(el)) {
+          el.classList.add('pf-void');
+          if (el.tagName === 'SECTION' && el.id) document.querySelectorAll('a[href="#' + el.id + '"]').forEach(function (a) { a.classList.add('pf-void'); });
+        }
+      });
+      busy = false;
+    }
+    var tm = 0; function later() { clearTimeout(tm); tm = setTimeout(run, 120); }
+    window.PF_void = run;
+    run(); window.addEventListener('load', later);
+    if (document.documentElement.classList.contains('ed-mode') || /[?&]edit/.test(location.search)) {
+      new MutationObserver(later).observe(root, { childList: true, subtree: true, characterData: true });
+      new MutationObserver(later).observe(document.head, { childList: true, subtree: true, characterData: true });
+      document.addEventListener('focusin', later); document.addEventListener('focusout', later);
+    }
+  })();
 
   // 영상 기획서 화면 — 주소 끝이 #plan-<id> 이면 본문 대신 그 기획서를 보인다. 다른 # 이면 본문으로 돌아온다
   var MAIN = document.getElementById('top');
@@ -766,5 +862,7 @@ html:not(.ed-mode) :is([data-k="profile.facts"], [data-k="videos.0.points.2"], [
   });
 })();
 </script>
+
+<!-- pf-publish:1794543280866 -->
 
 </html>
